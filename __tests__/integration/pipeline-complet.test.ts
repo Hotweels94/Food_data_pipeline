@@ -12,10 +12,8 @@ describe("Tests d'intégration - Pipeline complet sur un petit jeu de données",
   const dbPath = ":memory:";
 
   beforeEach(() => {
-    // Créer une base de données SQLite de test en mémoire
     testDb = new Database(dbPath);
-    
-    // Créer la structure de la table dans la base de test
+  
     testDb.exec(`
       CREATE TABLE IF NOT EXISTS products (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -36,7 +34,6 @@ describe("Tests d'intégration - Pipeline complet sur un petit jeu de données",
 
   afterEach(async () => {
     testDb.close();
-    // Nettoyer MongoDB si connecté
     if (mongoose.connection.readyState === 1) {
       await RawProduct.deleteMany({});
       await EnrichedProduct.deleteMany({});
@@ -45,16 +42,10 @@ describe("Tests d'intégration - Pipeline complet sur un petit jeu de données",
   });
 
   it("devrait exécuter le pipeline complet : collect -> enrich -> normalize", async () => {
-    // Étape 1: Collect - Récupérer des données réelles de l'API
     const products = await fetchOpenFoodFacts(1, 3);
     
     expect(products.length).toBeGreaterThan(0);
 
-    // Étape 2: Stocker dans MongoDB (simulation)
-    // Note: Ce test nécessite une connexion MongoDB réelle
-    // Pour un test isolé, on peut mocker cette partie
-    
-    // Créer des données de test simulées
     const testProducts = products.slice(0, Math.min(3, products.length)).map((product) => ({
       product_name: product.product_name || "Test Product",
       brands: product.brands || "",
@@ -64,7 +55,6 @@ describe("Tests d'intégration - Pipeline complet sur un petit jeu de données",
       nutriments: product.nutriments || {},
     }));
 
-    // Étape 3: Enrichissement - Simuler le processus d'enrichissement
     const enrichedData = testProducts.map((product) => {
       const nutriscore_grade = product.nutriscore_grade || "E";
       const nutri_score_personalized = computeNutriScorePersonalized(nutriscore_grade);
@@ -84,7 +74,6 @@ describe("Tests d'intégration - Pipeline complet sur un petit jeu de données",
       expect(["Europe", "Non-Europe"]).toContain(enriched.fromEurope);
     });
 
-    // Étape 4: Normalisation - Insérer dans SQLite
     const stmt = testDb.prepare(`
       INSERT OR IGNORE INTO products (
         mongo_id, name, brand, category,
@@ -111,13 +100,11 @@ describe("Tests d'intégration - Pipeline complet sur un petit jeu de données",
       );
     });
 
-    // Vérifier que les données sont dans SQLite
     const selectStmt = testDb.prepare("SELECT * FROM products");
     const sqliteProducts = selectStmt.all();
 
     expect(sqliteProducts.length).toBe(testProducts.length);
 
-    // Vérifier la structure des données normalisées
     sqliteProducts.forEach((product: any) => {
       expect(product).toHaveProperty("mongo_id");
       expect(product).toHaveProperty("name");
@@ -125,10 +112,9 @@ describe("Tests d'intégration - Pipeline complet sur un petit jeu de données",
       expect(product).toHaveProperty("from_europe");
       expect(["Europe", "Non-Europe"]).toContain(product.from_europe);
     });
-  }, 30000); // Timeout de 30 secondes pour le pipeline complet
+  }, 30000);
 
   it("devrait maintenir la cohérence des données à travers le pipeline", async () => {
-    // Créer un jeu de données de test contrôlé
     const testProduct = {
       product_name: "Produit Test Cohérence",
       brands: "Marque Test",
@@ -143,14 +129,12 @@ describe("Tests d'intégration - Pipeline complet sur un petit jeu de données",
       },
     };
 
-    // Enrichissement
     const nutri_score = computeNutriScorePersonalized(testProduct.nutriscore_grade);
     const fromEuropeValue = fromEurope(testProduct.country);
 
     expect(nutri_score).toBe(30); // B = 30
     expect(fromEuropeValue).toBe("Europe");
 
-    // Normalisation
     const stmt = testDb.prepare(`
       INSERT INTO products (
         mongo_id, name, brand, category,
@@ -172,7 +156,6 @@ describe("Tests d'intégration - Pipeline complet sur un petit jeu de données",
       testProduct.nutriments.salt,
     );
 
-    // Vérifier la cohérence
     const selectStmt = testDb.prepare("SELECT * FROM products WHERE mongo_id = ?");
     const product = selectStmt.get("coherence_test_id") as any;
 
@@ -194,17 +177,14 @@ describe("Tests d'intégration - Pipeline complet sur un petit jeu de données",
       country?: string;
     } = {
       product_name: "Produit Incomplet",
-      // Pas de brands, categories, nutriscore_grade, etc.
     };
 
-    // Enrichissement avec valeurs par défaut
     const nutri_score = computeNutriScorePersonalized(incompleteProduct.nutriscore_grade || "E");
     const fromEuropeValue = fromEurope(incompleteProduct.country || "");
 
-    expect(nutri_score).toBe(0); // E par défaut
-    expect(fromEuropeValue).toBe("Non-Europe"); // Pays vide = Non-Europe
+    expect(nutri_score).toBe(0);
+    expect(fromEuropeValue).toBe("Non-Europe");
 
-    // Normalisation
     const stmt = testDb.prepare(`
       INSERT INTO products (
         mongo_id, name, brand, category,
@@ -226,7 +206,6 @@ describe("Tests d'intégration - Pipeline complet sur un petit jeu de données",
       null,
     );
 
-    // Vérifier que les valeurs par défaut sont appliquées
     const selectStmt = testDb.prepare("SELECT * FROM products WHERE mongo_id = ?");
     const product = selectStmt.get("incomplete_test_id") as any;
 

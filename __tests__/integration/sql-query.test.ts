@@ -1,14 +1,11 @@
 import Database from "better-sqlite3";
-import db from "@/lib/initDb.js";
 
 describe("Tests d'intégration - Requêtes SQL", () => {
   let testDb: Database.Database;
 
   beforeEach(() => {
-    // Créer une base de données de test en mémoire
     testDb = new Database(":memory:");
     
-    // Créer la structure de la table
     testDb.exec(`
       CREATE TABLE IF NOT EXISTS products (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -26,7 +23,6 @@ describe("Tests d'intégration - Requêtes SQL", () => {
       );
     `);
 
-    // Insérer des données de test
     const stmt = testDb.prepare(`
       INSERT INTO products (
         mongo_id, name, brand, category,
@@ -59,7 +55,7 @@ describe("Tests d'intégration - Requêtes SQL", () => {
     const products = stmt.all("%Produit A%");
 
     expect(products).toHaveLength(1);
-    expect(products[0].name).toBe("Produit A");
+    expect((products[0] as any).name).toBe("Produit A");
   });
 
   it("devrait filtrer par nutriscore_score", () => {
@@ -67,7 +63,7 @@ describe("Tests d'intégration - Requêtes SQL", () => {
     const products = stmt.all(40);
 
     expect(products).toHaveLength(1);
-    expect(products[0].nutriscore_score).toBe(40);
+    expect((products[0] as any).nutriscore_score).toBe(40);
   });
 
   it("devrait filtrer par from_europe", () => {
@@ -104,7 +100,7 @@ describe("Tests d'intégration - Requêtes SQL", () => {
     const products = stmt.all("Europe", 40);
 
     expect(products).toHaveLength(1);
-    expect(products[0].name).toBe("Produit A");
+    expect((products[0] as any).name).toBe("Produit A");
   });
 
   it("devrait compter le total avec COUNT", () => {
@@ -127,7 +123,7 @@ describe("Tests d'intégration - Requêtes SQL", () => {
     const stmt = testDb.prepare("SELECT * FROM products ORDER BY name ASC");
     const products = stmt.all() as any[];
 
-    expect(products[0].name).toBe("Produit A");
+    expect((products[0] as any).name).toBe("Produit A");
     expect(products[products.length - 1].name).toBe("Produit D");
   });
 
