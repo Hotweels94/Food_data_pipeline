@@ -1,0 +1,3087 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "_id",
+    "__v",
+    "fromEurope",
+    "nutri_score_personalized",
+    "raw_product",
+    "raw_product_data"
+  ],
+  "properties": {
+    "_id": {
+      "$ref": "#/$defs/ObjectId"
+    },
+    "__v": {
+      "type": "integer"
+    },
+    "fromEurope": {
+      "type": "string"
+    },
+    "nutri_score_personalized": {
+      "type": "integer"
+    },
+    "raw_product": {
+      "$ref": "#/$defs/ObjectId"
+    },
+    "raw_product_data": {
+      "type": "object",
+      "required": [
+        "countries"
+      ],
+      "properties": {
+        "brands": {
+          "type": "string"
+        },
+        "categories": {
+          "type": "string"
+        },
+        "countries": {
+          "type": "string"
+        },
+        "ingredients_text": {
+          "type": "string"
+        },
+        "nutriments": {
+          "type": "object",
+          "required": [],
+          "properties": {
+            "acides-gras-mono-insatures_100g": {
+              "$ref": "#/$defs/Double"
+            },
+            "acides-gras-mono-insatures_serving": {
+              "$ref": "#/$defs/Double"
+            },
+            "acides-gras-polyinsatures_100g": {
+              "$ref": "#/$defs/Double"
+            },
+            "acides-gras-polyinsatures_serving": {
+              "$ref": "#/$defs/Double"
+            },
+            "added-sugars": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "added-sugars_100g": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "added-sugars_serving": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "added-sugars_unit": {
+              "type": "string"
+            },
+            "added-sugars_value": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "alcohol": {
+              "type": "integer"
+            },
+            "alcohol_100g": {
+              "type": "integer"
+            },
+            "alcohol_prepared_unit": {
+              "type": "string"
+            },
+            "alcohol_serving": {
+              "type": "integer"
+            },
+            "alcohol_unit": {
+              "type": "string"
+            },
+            "alcohol_value": {
+              "type": "integer"
+            },
+            "alpha-linolenic-acid": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "alpha-linolenic-acid_100g": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "alpha-linolenic-acid_label": {
+              "type": "string"
+            },
+            "alpha-linolenic-acid_modifier": {
+              "type": "string"
+            },
+            "alpha-linolenic-acid_serving": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "alpha-linolenic-acid_unit": {
+              "type": "string"
+            },
+            "alpha-linolenic-acid_value": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "arachidic-acid": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "arachidic-acid_100g": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "arachidic-acid_serving": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "arachidic-acid_unit": {
+              "type": "string"
+            },
+            "arachidic-acid_value": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "bicarbonate": {
+              "$ref": "#/$defs/Double"
+            },
+            "bicarbonate_100g": {
+              "$ref": "#/$defs/Double"
+            },
+            "bicarbonate_label": {
+              "type": "string"
+            },
+            "bicarbonate_prepared_unit": {
+              "type": "string"
+            },
+            "bicarbonate_serving": {
+              "$ref": "#/$defs/Double"
+            },
+            "bicarbonate_unit": {
+              "type": "string"
+            },
+            "bicarbonate_value": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "biotin": {
+              "$ref": "#/$defs/Double"
+            },
+            "biotin_100g": {
+              "$ref": "#/$defs/Double"
+            },
+            "biotin_unit": {
+              "type": "string"
+            },
+            "biotin_value": {
+              "$ref": "#/$defs/Double"
+            },
+            "caffeine": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "caffeine_100g": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "caffeine_serving": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "caffeine_unit": {
+              "type": "string"
+            },
+            "caffeine_value": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "calcium": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "calcium_100g": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "calcium_label": {
+              "type": "string"
+            },
+            "calcium_modifier": {
+              "type": "string"
+            },
+            "calcium_prepared": {
+              "$ref": "#/$defs/Double"
+            },
+            "calcium_prepared_100g": {
+              "$ref": "#/$defs/Double"
+            },
+            "calcium_prepared_unit": {
+              "type": "string"
+            },
+            "calcium_prepared_value": {
+              "type": "integer"
+            },
+            "calcium_serving": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "calcium_unit": {
+              "type": "string"
+            },
+            "calcium_value": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "carbohydrates": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "carbohydrates_100g": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "carbohydrates_modifier": {
+              "type": "string"
+            },
+            "carbohydrates_prepared": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "carbohydrates_prepared_100g": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "carbohydrates_prepared_serving": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "carbohydrates_prepared_unit": {
+              "type": "string"
+            },
+            "carbohydrates_prepared_value": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "carbohydrates_serving": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "carbohydrates_unit": {
+              "type": "string"
+            },
+            "carbohydrates_value": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "carbon-footprint-from-known-ingredients_100g": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "carbon-footprint-from-known-ingredients_product": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "carbon-footprint-from-known-ingredients_serving": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "carbon-footprint_prepared_unit": {
+              "type": "string"
+            },
+            "chloride": {
+              "$ref": "#/$defs/Double"
+            },
+            "chloride_100g": {
+              "$ref": "#/$defs/Double"
+            },
+            "chloride_label": {
+              "type": "string"
+            },
+            "chloride_prepared_unit": {
+              "type": "string"
+            },
+            "chloride_serving": {
+              "$ref": "#/$defs/Double"
+            },
+            "chloride_unit": {
+              "type": "string"
+            },
+            "chloride_value": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "cholesterol": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "cholesterol_100g": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "cholesterol_label": {
+              "type": "string"
+            },
+            "cholesterol_modifier": {
+              "type": "string"
+            },
+            "cholesterol_serving": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "cholesterol_unit": {
+              "type": "string"
+            },
+            "cholesterol_value": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "choline": {
+              "type": "integer"
+            },
+            "choline_100g": {
+              "type": "integer"
+            },
+            "choline_serving": {
+              "type": "integer"
+            },
+            "choline_unit": {
+              "type": "string"
+            },
+            "choline_value": {
+              "type": "integer"
+            },
+            "cocoa": {
+              "type": "integer"
+            },
+            "cocoa_100g": {
+              "type": "integer"
+            },
+            "cocoa_label": {
+              "type": "string"
+            },
+            "cocoa_serving": {
+              "type": "integer"
+            },
+            "cocoa_unit": {
+              "type": "string"
+            },
+            "cocoa_value": {
+              "type": "integer"
+            },
+            "copper": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "copper_100g": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "copper_label": {
+              "type": "string"
+            },
+            "copper_serving": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "copper_unit": {
+              "type": "string"
+            },
+            "copper_value": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "en-strontium_prepared_unit": {
+              "type": "string"
+            },
+            "en-sulfate_prepared_unit": {
+              "type": "string"
+            },
+            "energy": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "energy-kcal": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "energy-kcal_100g": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "energy-kcal_prepared": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "energy-kcal_prepared_100g": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "energy-kcal_prepared_serving": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "energy-kcal_prepared_unit": {
+              "type": "string"
+            },
+            "energy-kcal_prepared_value": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "energy-kcal_serving": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "energy-kcal_unit": {
+              "type": "string"
+            },
+            "energy-kcal_value": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "energy-kcal_value_computed": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "energy-kj": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "energy-kj_100g": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "energy-kj_prepared": {
+              "type": "integer"
+            },
+            "energy-kj_prepared_100g": {
+              "type": "integer"
+            },
+            "energy-kj_prepared_serving": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "energy-kj_prepared_unit": {
+              "type": "string"
+            },
+            "energy-kj_prepared_value": {
+              "type": "integer"
+            },
+            "energy-kj_serving": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "energy-kj_unit": {
+              "type": "string"
+            },
+            "energy-kj_value": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "energy-kj_value_computed": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "energy_100g": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "energy_prepared": {
+              "type": "integer"
+            },
+            "energy_prepared_100g": {
+              "type": "integer"
+            },
+            "energy_prepared_serving": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "energy_prepared_unit": {
+              "type": "string"
+            },
+            "energy_prepared_value": {
+              "type": "integer"
+            },
+            "energy_serving": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "energy_unit": {
+              "type": "string"
+            },
+            "energy_value": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "fat": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "fat_100g": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "fat_label": {
+              "type": "string"
+            },
+            "fat_modifier": {
+              "type": "string"
+            },
+            "fat_prepared": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "fat_prepared_100g": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "fat_prepared_serving": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "fat_prepared_unit": {
+              "type": "string"
+            },
+            "fat_prepared_value": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "fat_serving": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "fat_unit": {
+              "type": "string"
+            },
+            "fat_value": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "fiber": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "fiber_100g": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "fiber_modifier": {
+              "type": "string"
+            },
+            "fiber_prepared": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "fiber_prepared_100g": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "fiber_prepared_modifier": {
+              "type": "string"
+            },
+            "fiber_prepared_serving": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "fiber_prepared_unit": {
+              "type": "string"
+            },
+            "fiber_prepared_value": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "fiber_serving": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "fiber_unit": {
+              "type": "string"
+            },
+            "fiber_value": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "fluoride": {
+              "$ref": "#/$defs/Double"
+            },
+            "fluoride_100g": {
+              "$ref": "#/$defs/Double"
+            },
+            "fluoride_label": {
+              "type": "string"
+            },
+            "fluoride_modifier": {
+              "type": "string"
+            },
+            "fluoride_prepared_unit": {
+              "type": "string"
+            },
+            "fluoride_serving": {
+              "$ref": "#/$defs/Double"
+            },
+            "fluoride_unit": {
+              "type": "string"
+            },
+            "fluoride_value": {
+              "$ref": "#/$defs/Double"
+            },
+            "fr-residu-sec-a-105-c": {
+              "$ref": "#/$defs/Double"
+            },
+            "fr-residu-sec-a-105-c_100g": {
+              "$ref": "#/$defs/Double"
+            },
+            "fr-residu-sec-a-105-c_label": {
+              "type": "string"
+            },
+            "fr-residu-sec-a-105-c_serving": {
+              "$ref": "#/$defs/Double"
+            },
+            "fr-residu-sec-a-105-c_unit": {
+              "type": "string"
+            },
+            "fr-residu-sec-a-105-c_value": {
+              "type": "integer"
+            },
+            "fr-strontium_prepared": {
+              "$ref": "#/$defs/Double"
+            },
+            "fr-strontium_prepared_serving": {
+              "$ref": "#/$defs/Double"
+            },
+            "fr-strontium_prepared_unit": {
+              "type": "string"
+            },
+            "fr-strontium_prepared_value": {
+              "$ref": "#/$defs/Double"
+            },
+            "fr-sulfate_prepared": {
+              "$ref": "#/$defs/Double"
+            },
+            "fr-sulfate_prepared_serving": {
+              "$ref": "#/$defs/Double"
+            },
+            "fr-sulfate_prepared_unit": {
+              "type": "string"
+            },
+            "fr-sulfate_prepared_value": {
+              "$ref": "#/$defs/Double"
+            },
+            "fructose": {
+              "type": "integer"
+            },
+            "fructose_100g": {
+              "$ref": "#/$defs/Double"
+            },
+            "fructose_label": {
+              "type": "string"
+            },
+            "fructose_serving": {
+              "type": "integer"
+            },
+            "fructose_unit": {
+              "type": "string"
+            },
+            "fructose_value": {
+              "type": "integer"
+            },
+            "fruits-vegetables-legumes-estimate-from-ingredients_100g": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "fruits-vegetables-legumes-estimate-from-ingredients_serving": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "fruits-vegetables-nuts": {
+              "type": "integer"
+            },
+            "fruits-vegetables-nuts-estimate": {
+              "type": "integer"
+            },
+            "fruits-vegetables-nuts-estimate-from-ingredients_100g": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "fruits-vegetables-nuts-estimate-from-ingredients_serving": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "fruits-vegetables-nuts-estimate_100g": {
+              "type": "integer"
+            },
+            "fruits-vegetables-nuts-estimate_label": {
+              "type": "string"
+            },
+            "fruits-vegetables-nuts-estimate_serving": {
+              "type": "integer"
+            },
+            "fruits-vegetables-nuts-estimate_unit": {
+              "type": "string"
+            },
+            "fruits-vegetables-nuts-estimate_value": {
+              "type": "integer"
+            },
+            "fruits-vegetables-nuts_100g": {
+              "type": "integer"
+            },
+            "fruits-vegetables-nuts_label": {
+              "type": "string"
+            },
+            "fruits-vegetables-nuts_prepared_unit": {
+              "type": "string"
+            },
+            "fruits-vegetables-nuts_serving": {
+              "type": "integer"
+            },
+            "fruits-vegetables-nuts_unit": {
+              "type": "string"
+            },
+            "fruits-vegetables-nuts_value": {
+              "type": "integer"
+            },
+            "iodine": {
+              "$ref": "#/$defs/Double"
+            },
+            "iodine_100g": {
+              "$ref": "#/$defs/Double"
+            },
+            "iodine_label": {
+              "type": "string"
+            },
+            "iodine_serving": {
+              "$ref": "#/$defs/Double"
+            },
+            "iodine_unit": {
+              "type": "string"
+            },
+            "iodine_value": {
+              "$ref": "#/$defs/Double"
+            },
+            "iron": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "iron_100g": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "iron_label": {
+              "type": "string"
+            },
+            "iron_modifier": {
+              "type": "string"
+            },
+            "iron_serving": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "iron_unit": {
+              "type": "string"
+            },
+            "iron_value": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "lactose": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "lactose_100g": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "lactose_label": {
+              "type": "string"
+            },
+            "lactose_serving": {
+              "type": "integer"
+            },
+            "lactose_unit": {
+              "type": "string"
+            },
+            "lactose_value": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "linoleic-acid": {
+              "$ref": "#/$defs/Double"
+            },
+            "linoleic-acid_100g": {
+              "$ref": "#/$defs/Double"
+            },
+            "linoleic-acid_label": {
+              "type": "string"
+            },
+            "linoleic-acid_serving": {
+              "$ref": "#/$defs/Double"
+            },
+            "linoleic-acid_unit": {
+              "type": "string"
+            },
+            "linoleic-acid_value": {
+              "$ref": "#/$defs/Double"
+            },
+            "magnesium": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "magnesium_100g": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "magnesium_label": {
+              "type": "string"
+            },
+            "magnesium_prepared": {
+              "$ref": "#/$defs/Double"
+            },
+            "magnesium_prepared_100g": {
+              "$ref": "#/$defs/Double"
+            },
+            "magnesium_prepared_serving": {
+              "$ref": "#/$defs/Double"
+            },
+            "magnesium_prepared_unit": {
+              "type": "string"
+            },
+            "magnesium_prepared_value": {
+              "$ref": "#/$defs/Double"
+            },
+            "magnesium_serving": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "magnesium_unit": {
+              "type": "string"
+            },
+            "magnesium_value": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "maltodextrins": {
+              "$ref": "#/$defs/Double"
+            },
+            "maltodextrins_100g": {
+              "$ref": "#/$defs/Double"
+            },
+            "maltodextrins_label": {
+              "type": "string"
+            },
+            "maltodextrins_unit": {
+              "type": "string"
+            },
+            "maltodextrins_value": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "manganese": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "manganese_100g": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "manganese_serving": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "manganese_unit": {
+              "type": "string"
+            },
+            "manganese_value": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "monounsaturated-fat": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "monounsaturated-fat_100g": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "monounsaturated-fat_label": {
+              "type": "string"
+            },
+            "monounsaturated-fat_serving": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "monounsaturated-fat_unit": {
+              "type": "string"
+            },
+            "monounsaturated-fat_value": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "nitrate": {
+              "$ref": "#/$defs/Double"
+            },
+            "nitrate_100g": {
+              "$ref": "#/$defs/Double"
+            },
+            "nitrate_label": {
+              "type": "string"
+            },
+            "nitrate_modifier": {
+              "type": "string"
+            },
+            "nitrate_prepared_unit": {
+              "type": "string"
+            },
+            "nitrate_serving": {
+              "$ref": "#/$defs/Double"
+            },
+            "nitrate_unit": {
+              "type": "string"
+            },
+            "nitrate_value": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "nova-group": {
+              "type": "integer"
+            },
+            "nova-group_100g": {
+              "type": "integer"
+            },
+            "nova-group_serving": {
+              "type": "integer"
+            },
+            "nutrition-score-fr": {
+              "type": "integer"
+            },
+            "nutrition-score-fr_100g": {
+              "type": "integer"
+            },
+            "nutrition-score_unit": {
+              "type": "string"
+            },
+            "nutrition-score_value": {
+              "type": "integer"
+            },
+            "oleic-acid": {
+              "type": "integer"
+            },
+            "oleic-acid_100g": {
+              "type": "integer"
+            },
+            "oleic-acid_serving": {
+              "$ref": "#/$defs/Double"
+            },
+            "oleic-acid_unit": {
+              "type": "string"
+            },
+            "oleic-acid_value": {
+              "type": "integer"
+            },
+            "omega-3-fat": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "omega-3-fat_100g": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "omega-3-fat_label": {
+              "type": "string"
+            },
+            "omega-3-fat_serving": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "omega-3-fat_unit": {
+              "type": "string"
+            },
+            "omega-3-fat_value": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "omega-6-fat": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "omega-6-fat_100g": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "omega-6-fat_label": {
+              "type": "string"
+            },
+            "omega-6-fat_serving": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "omega-6-fat_unit": {
+              "type": "string"
+            },
+            "omega-6-fat_value": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "omega-9-fat": {
+              "type": "integer"
+            },
+            "omega-9-fat_100g": {
+              "type": "integer"
+            },
+            "omega-9-fat_label": {
+              "type": "string"
+            },
+            "omega-9-fat_unit": {
+              "type": "string"
+            },
+            "omega-9-fat_value": {
+              "type": "integer"
+            },
+            "pantothenic-acid": {
+              "$ref": "#/$defs/Double"
+            },
+            "pantothenic-acid_100g": {
+              "$ref": "#/$defs/Double"
+            },
+            "pantothenic-acid_label": {
+              "type": "string"
+            },
+            "pantothenic-acid_serving": {
+              "$ref": "#/$defs/Double"
+            },
+            "pantothenic-acid_unit": {
+              "type": "string"
+            },
+            "pantothenic-acid_value": {
+              "$ref": "#/$defs/Double"
+            },
+            "ph": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "ph_100g": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "ph_label": {
+              "type": "string"
+            },
+            "ph_modifier": {
+              "type": "string"
+            },
+            "ph_prepared_unit": {
+              "type": "string"
+            },
+            "ph_serving": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "ph_unit": {
+              "type": "string"
+            },
+            "ph_value": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "phosphorus": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "phosphorus_100g": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "phosphorus_label": {
+              "type": "string"
+            },
+            "phosphorus_serving": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "phosphorus_unit": {
+              "type": "string"
+            },
+            "phosphorus_value": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "polyunsaturated-fat": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "polyunsaturated-fat_100g": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "polyunsaturated-fat_label": {
+              "type": "string"
+            },
+            "polyunsaturated-fat_serving": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "polyunsaturated-fat_unit": {
+              "type": "string"
+            },
+            "polyunsaturated-fat_value": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "potassium": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "potassium_100g": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "potassium_label": {
+              "type": "string"
+            },
+            "potassium_prepared_unit": {
+              "type": "string"
+            },
+            "potassium_serving": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "potassium_unit": {
+              "type": "string"
+            },
+            "potassium_value": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "proteins": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "proteins_100g": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "proteins_modifier": {
+              "type": "string"
+            },
+            "proteins_prepared": {
+              "$ref": "#/$defs/Double"
+            },
+            "proteins_prepared_100g": {
+              "$ref": "#/$defs/Double"
+            },
+            "proteins_prepared_serving": {
+              "$ref": "#/$defs/Double"
+            },
+            "proteins_prepared_unit": {
+              "type": "string"
+            },
+            "proteins_prepared_value": {
+              "$ref": "#/$defs/Double"
+            },
+            "proteins_serving": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "proteins_unit": {
+              "type": "string"
+            },
+            "proteins_value": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "salt": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "salt_100g": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "salt_modifier": {
+              "type": "string"
+            },
+            "salt_prepared": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "salt_prepared_100g": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "salt_prepared_serving": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "salt_prepared_unit": {
+              "type": "string"
+            },
+            "salt_prepared_value": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "salt_serving": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "salt_unit": {
+              "type": "string"
+            },
+            "salt_value": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "saturated-fat": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "saturated-fat_100g": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "saturated-fat_modifier": {
+              "type": "string"
+            },
+            "saturated-fat_prepared": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "saturated-fat_prepared_100g": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "saturated-fat_prepared_serving": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "saturated-fat_prepared_unit": {
+              "type": "string"
+            },
+            "saturated-fat_prepared_value": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "saturated-fat_serving": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "saturated-fat_unit": {
+              "type": "string"
+            },
+            "saturated-fat_value": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "selenium": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "selenium_100g": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "selenium_serving": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "selenium_unit": {
+              "type": "string"
+            },
+            "selenium_value": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "silica": {
+              "$ref": "#/$defs/Double"
+            },
+            "silica_100g": {
+              "$ref": "#/$defs/Double"
+            },
+            "silica_label": {
+              "type": "string"
+            },
+            "silica_serving": {
+              "$ref": "#/$defs/Double"
+            },
+            "silica_unit": {
+              "type": "string"
+            },
+            "silica_value": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "sodium": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "sodium_100g": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "sodium_modifier": {
+              "type": "string"
+            },
+            "sodium_prepared": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "sodium_prepared_100g": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "sodium_prepared_serving": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "sodium_prepared_unit": {
+              "type": "string"
+            },
+            "sodium_prepared_value": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "sodium_serving": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "sodium_unit": {
+              "type": "string"
+            },
+            "sodium_value": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "starch": {
+              "type": "integer"
+            },
+            "starch_100g": {
+              "type": "integer"
+            },
+            "starch_serving": {
+              "type": "integer"
+            },
+            "starch_unit": {
+              "type": "string"
+            },
+            "starch_value": {
+              "type": "integer"
+            },
+            "sterco-di-mucca_prepared_unit": {
+              "type": "string"
+            },
+            "sugars": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "sugars_100g": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "sugars_modifier": {
+              "type": "string"
+            },
+            "sugars_prepared": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "sugars_prepared_100g": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "sugars_prepared_serving": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "sugars_prepared_unit": {
+              "type": "string"
+            },
+            "sugars_prepared_value": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "sugars_serving": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "sugars_unit": {
+              "type": "string"
+            },
+            "sugars_value": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "sulphate": {
+              "$ref": "#/$defs/Double"
+            },
+            "sulphate_100g": {
+              "$ref": "#/$defs/Double"
+            },
+            "sulphate_label": {
+              "type": "string"
+            },
+            "sulphate_serving": {
+              "$ref": "#/$defs/Double"
+            },
+            "sulphate_unit": {
+              "type": "string"
+            },
+            "sulphate_value": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "trans-fat": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "trans-fat_100g": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "trans-fat_label": {
+              "type": "string"
+            },
+            "trans-fat_modifier": {
+              "type": "string"
+            },
+            "trans-fat_serving": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "trans-fat_unit": {
+              "type": "string"
+            },
+            "trans-fat_value": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "vitamin-a": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "vitamin-a_100g": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "vitamin-a_label": {
+              "type": "string"
+            },
+            "vitamin-a_modifier": {
+              "type": "string"
+            },
+            "vitamin-a_serving": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "vitamin-a_unit": {
+              "type": "string"
+            },
+            "vitamin-a_value": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "vitamin-b1": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "vitamin-b12": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "vitamin-b12_100g": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "vitamin-b12_label": {
+              "type": "string"
+            },
+            "vitamin-b12_serving": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "vitamin-b12_unit": {
+              "type": "string"
+            },
+            "vitamin-b12_value": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "vitamin-b1_100g": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "vitamin-b1_label": {
+              "type": "string"
+            },
+            "vitamin-b1_serving": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "vitamin-b1_unit": {
+              "type": "string"
+            },
+            "vitamin-b1_value": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "vitamin-b2": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "vitamin-b2_100g": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "vitamin-b2_label": {
+              "type": "string"
+            },
+            "vitamin-b2_serving": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "vitamin-b2_unit": {
+              "type": "string"
+            },
+            "vitamin-b2_value": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "vitamin-b6": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "vitamin-b6_100g": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "vitamin-b6_label": {
+              "type": "string"
+            },
+            "vitamin-b6_serving": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "vitamin-b6_unit": {
+              "type": "string"
+            },
+            "vitamin-b6_value": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "vitamin-b9": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "vitamin-b9_100g": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "vitamin-b9_label": {
+              "type": "string"
+            },
+            "vitamin-b9_serving": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "vitamin-b9_unit": {
+              "type": "string"
+            },
+            "vitamin-b9_value": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "vitamin-c": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "vitamin-c_100g": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "vitamin-c_label": {
+              "type": "string"
+            },
+            "vitamin-c_modifier": {
+              "type": "string"
+            },
+            "vitamin-c_prepared": {
+              "$ref": "#/$defs/Double"
+            },
+            "vitamin-c_prepared_100g": {
+              "$ref": "#/$defs/Double"
+            },
+            "vitamin-c_prepared_unit": {
+              "type": "string"
+            },
+            "vitamin-c_prepared_value": {
+              "type": "integer"
+            },
+            "vitamin-c_serving": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "vitamin-c_unit": {
+              "type": "string"
+            },
+            "vitamin-c_value": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "vitamin-d": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "vitamin-d_100g": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "vitamin-d_label": {
+              "type": "string"
+            },
+            "vitamin-d_prepared": {
+              "$ref": "#/$defs/Double"
+            },
+            "vitamin-d_prepared_100g": {
+              "$ref": "#/$defs/Double"
+            },
+            "vitamin-d_prepared_unit": {
+              "type": "string"
+            },
+            "vitamin-d_prepared_value": {
+              "$ref": "#/$defs/Double"
+            },
+            "vitamin-d_serving": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "vitamin-d_unit": {
+              "type": "string"
+            },
+            "vitamin-d_value": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "vitamin-e": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "vitamin-e_100g": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "vitamin-e_label": {
+              "type": "string"
+            },
+            "vitamin-e_serving": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "vitamin-e_unit": {
+              "type": "string"
+            },
+            "vitamin-e_value": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "vitamin-k": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "vitamin-k_100g": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "vitamin-k_serving": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "vitamin-k_unit": {
+              "type": "string"
+            },
+            "vitamin-k_value": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "vitamin-pp": {
+              "$ref": "#/$defs/Double"
+            },
+            "vitamin-pp_100g": {
+              "$ref": "#/$defs/Double"
+            },
+            "vitamin-pp_label": {
+              "type": "string"
+            },
+            "vitamin-pp_serving": {
+              "$ref": "#/$defs/Double"
+            },
+            "vitamin-pp_unit": {
+              "type": "string"
+            },
+            "vitamin-pp_value": {
+              "anyOf": [
+                {
+                  "$ref": "#/$defs/Double"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "zinc": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "zinc_100g": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "zinc_label": {
+              "type": "string"
+            },
+            "zinc_serving": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            },
+            "zinc_unit": {
+              "type": "string"
+            },
+            "zinc_value": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/$defs/Double"
+                }
+              ]
+            }
+          }
+        },
+        "nutriscore_grade": {
+          "type": "string"
+        },
+        "product_name": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "ObjectId": {
+      "type": "object",
+      "properties": {
+        "$oid": {
+          "type": "string",
+          "pattern": "^[0-9a-fA-F]{24}$"
+        }
+      },
+      "required": [
+        "$oid"
+      ],
+      "additionalProperties": false
+    },
+    "Double": {
+      "oneOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "$numberDouble": {
+              "enum": [
+                "Infinity",
+                "-Infinity",
+                "NaN"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  }
+}
