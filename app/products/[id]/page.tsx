@@ -13,6 +13,8 @@ type Product = {
   sugar: number | null;
   salt: number | null;
   created_at?: string;
+  image_url?: string | null;
+  barcode?: string | null;
 };
 
 async function getProduct(id: string) {
@@ -115,6 +117,16 @@ export default async function ProductPage({
           </div>
 
           <div className="px-6 py-6">
+            {product.image_url && (
+              <div className="mb-6 flex justify-center">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={product.image_url}
+                  alt={product.name || "Image du produit"}
+                  className="max-h-64 rounded-xl object-contain shadow-sm"
+                />
+              </div>
+            )}
             <h2 className="mb-4 text-sm font-semibold uppercase tracking-wide text-stone-500">
               Informations nutritionnelles
             </h2>
@@ -128,6 +140,7 @@ export default async function ProductPage({
                     : `Grade ${["A", "B", "C", "D", "E"][scoreToGradeIndex(product.nutriscore_score)]}`
                 }
               />
+              <InfoRow label="Code-barres" value={product.barcode ?? null} />
               <InfoRow label="Origine" value={product.from_europe} />
               <InfoRow label="Calories" value={product.calories} unit=" kcal" />
               <InfoRow label="Matières grasses" value={product.fat} unit=" g" />

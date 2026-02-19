@@ -73,10 +73,41 @@ describe("Normalisation - mongoToSqlite", () => {
 
     (EnrichedProduct.find as jest.Mock).mockResolvedValue(mockEnrichedProducts);
 
-    const stmt = testDb.prepare(`
+    // On utilise désormais le schéma normalisé : tables brands, categories, nutriscores, regions, products
+    const insertBrand = testDb.prepare(`
+      INSERT INTO brands (name) VALUES (?)
+      ON CONFLICT(name) DO NOTHING
+    `);
+    const selectBrandId = testDb.prepare(`SELECT id FROM brands WHERE name = ?`);
+
+    const insertCategory = testDb.prepare(`
+      INSERT INTO categories (name) VALUES (?)
+      ON CONFLICT(name) DO NOTHING
+    `);
+    const selectCategoryId = testDb.prepare(
+      `SELECT id FROM categories WHERE name = ?`,
+    );
+
+    const insertNutriscore = testDb.prepare(`
+      INSERT INTO nutriscores (score) VALUES (?)
+      ON CONFLICT(score) DO NOTHING
+    `);
+    const selectNutriscoreId = testDb.prepare(
+      `SELECT id FROM nutriscores WHERE score = ?`,
+    );
+
+    const insertRegion = testDb.prepare(`
+      INSERT INTO regions (label) VALUES (?)
+      ON CONFLICT(label) DO NOTHING
+    `);
+    const selectRegionId = testDb.prepare(
+      `SELECT id FROM regions WHERE label = ?`,
+    );
+
+    const insertProduct = testDb.prepare(`
       INSERT OR IGNORE INTO products (
-        mongo_id, name, brand, category,
-        nutriscore_score, from_europe,
+        mongo_id, name,
+        brand_id, category_id, nutriscore_id, region_id,
         calories, fat, sugar, salt
       ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `);
@@ -85,21 +116,67 @@ describe("Normalisation - mongoToSqlite", () => {
       const data = p.raw_product_data || {};
       const nutriments = data.nutriments || {};
 
-      stmt.run(
+      const name = data.product_name || "";
+      const brandName = (data.brands || "").trim() || null;
+      const categoryName = (data.categories || "").trim() || null;
+      const score = p.nutri_score_personalized || 0;
+      const regionLabel = (p.fromEurope || "").trim() || null;
+
+      let brandId: number | null = null;
+      if (brandName) {
+        insertBrand.run(brandName);
+        brandId = (selectBrandId.get(brandName) as any)?.id ?? null;
+      }
+
+      let categoryId: number | null = null;
+      if (categoryName) {
+        insertCategory.run(categoryName);
+        categoryId = (selectCategoryId.get(categoryName) as any)?.id ?? null;
+      }
+
+      insertNutriscore.run(score);
+      const nutriscoreId =
+        (selectNutriscoreId.get(score) as any)?.id ?? null;
+
+      let regionId: number | null = null;
+      if (regionLabel) {
+        insertRegion.run(regionLabel);
+        regionId = (selectRegionId.get(regionLabel) as any)?.id ?? null;
+      }
+
+      insertProduct.run(
         p._id.toString(),
-        data.product_name || "",
-        data.brands || "",
-        data.categories || "",
-        p.nutri_score_personalized || 0,
-        p.fromEurope,
-        nutriments.energy || null,
-        nutriments.fat || null,
-        nutriments.sugars || null,
-        nutriments.salt || null,
+        name,
+        brandId,
+        categoryId,
+        nutriscoreId,
+        regionId,
+        nutriments.energy ?? null,
+        nutriments.fat ?? null,
+        nutriments.sugars ?? null,
+        nutriments.salt ?? null,
       );
     }
 
-    const selectStmt = testDb.prepare("SELECT * FROM products");
+    const selectStmt = testDb.prepare(`
+      SELECT
+        p.mongo_id,
+        p.name,
+        b.name AS brand,
+        c.name AS category,
+        n.score AS nutriscore_score,
+        r.label AS from_europe,
+        p.calories,
+        p.fat,
+        p.sugar,
+        p.salt
+      FROM products p
+      LEFT JOIN brands b ON p.brand_id = b.id
+      LEFT JOIN categories c ON p.category_id = c.id
+      LEFT JOIN nutriscores n ON p.nutriscore_id = n.id
+      LEFT JOIN regions r ON p.region_id = r.id
+      ORDER BY p.mongo_id ASC
+    `);
     const products = selectStmt.all();
 
     expect(products).toHaveLength(2);
@@ -145,10 +222,40 @@ describe("Normalisation - mongoToSqlite", () => {
       fromEurope: "Non-Europe",
     };
 
-    const stmt = testDb.prepare(`
+    const insertBrand = testDb.prepare(`
+      INSERT INTO brands (name) VALUES (?)
+      ON CONFLICT(name) DO NOTHING
+    `);
+    const selectBrandId = testDb.prepare(`SELECT id FROM brands WHERE name = ?`);
+
+    const insertCategory = testDb.prepare(`
+      INSERT INTO categories (name) VALUES (?)
+      ON CONFLICT(name) DO NOTHING
+    `);
+    const selectCategoryId = testDb.prepare(
+      `SELECT id FROM categories WHERE name = ?`,
+    );
+
+    const insertNutriscore = testDb.prepare(`
+      INSERT INTO nutriscores (score) VALUES (?)
+      ON CONFLICT(score) DO NOTHING
+    `);
+    const selectNutriscoreId = testDb.prepare(
+      `SELECT id FROM nutriscores WHERE score = ?`,
+    );
+
+    const insertRegion = testDb.prepare(`
+      INSERT INTO regions (label) VALUES (?)
+      ON CONFLICT(label) DO NOTHING
+    `);
+    const selectRegionId = testDb.prepare(
+      `SELECT id FROM regions WHERE label = ?`,
+    );
+
+    const insertProduct = testDb.prepare(`
       INSERT OR IGNORE INTO products (
-        mongo_id, name, brand, category,
-        nutriscore_score, from_europe,
+        mongo_id, name,
+        brand_id, category_id, nutriscore_id, region_id,
         calories, fat, sugar, salt
       ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `);
@@ -156,26 +263,67 @@ describe("Normalisation - mongoToSqlite", () => {
     const data = mockEnrichedProduct.raw_product_data || {};
     const nutriments = data.nutriments || {};
 
-    stmt.run(
+    const name = data.product_name || "";
+    const brandName = (data.brands || "").trim() || null;
+    const categoryName = (data.categories || "").trim() || null;
+    const score = mockEnrichedProduct.nutri_score_personalized || 0;
+    const regionLabel = (mockEnrichedProduct.fromEurope || "").trim() || null;
+
+    let brandId: number | null = null;
+    if (brandName) {
+      insertBrand.run(brandName);
+      brandId = (selectBrandId.get(brandName) as any)?.id ?? null;
+    }
+
+    let categoryId: number | null = null;
+    if (categoryName) {
+      insertCategory.run(categoryName);
+      categoryId = (selectCategoryId.get(categoryName) as any)?.id ?? null;
+    }
+
+    insertNutriscore.run(score);
+    const nutriscoreId =
+      (selectNutriscoreId.get(score) as any)?.id ?? null;
+
+    let regionId: number | null = null;
+    if (regionLabel) {
+      insertRegion.run(regionLabel);
+      regionId = (selectRegionId.get(regionLabel) as any)?.id ?? null;
+    }
+
+    insertProduct.run(
       mockEnrichedProduct._id.toString(),
-      data.product_name || "",
-      data.brands || "",
-      data.categories || "",
-      mockEnrichedProduct.nutri_score_personalized || 0,
-      mockEnrichedProduct.fromEurope,
+      name,
+      brandId,
+      categoryId,
+      nutriscoreId,
+      regionId,
       nutriments.energy,
       nutriments.fat,
       nutriments.sugars,
       nutriments.salt,
     );
 
-    const selectStmt = testDb.prepare("SELECT * FROM products WHERE mongo_id = ?");
+    const selectStmt = testDb.prepare(`
+      SELECT
+        p.name,
+        b.name AS brand,
+        c.name AS category,
+        p.calories,
+        p.fat,
+        p.sugar,
+        p.salt
+      FROM products p
+      LEFT JOIN brands b ON p.brand_id = b.id
+      LEFT JOIN categories c ON p.category_id = c.id
+      WHERE p.mongo_id = ?
+    `);
     const product = selectStmt.get("mongo_id_null") as any;
 
     expect(product).toBeDefined();
     expect(product.name).toBe("");
-    expect(product.brand).toBe("");
-    expect(product.category).toBe("");
+    expect(product.brand).toBeNull();
+    expect(product.brand).toBeNull();
     expect(product.calories).toBeNull();
     expect(product.fat).toBeNull();
     expect(product.sugar).toBeNull();
@@ -200,10 +348,40 @@ describe("Normalisation - mongoToSqlite", () => {
       fromEurope: "Non-Europe",
     };
 
-    const stmt = testDb.prepare(`
+    const insertBrand = testDb.prepare(`
+      INSERT INTO brands (name) VALUES (?)
+      ON CONFLICT(name) DO NOTHING
+    `);
+    const selectBrandId = testDb.prepare(`SELECT id FROM brands WHERE name = ?`);
+
+    const insertCategory = testDb.prepare(`
+      INSERT INTO categories (name) VALUES (?)
+      ON CONFLICT(name) DO NOTHING
+    `);
+    const selectCategoryId = testDb.prepare(
+      `SELECT id FROM categories WHERE name = ?`,
+    );
+
+    const insertNutriscore = testDb.prepare(`
+      INSERT INTO nutriscores (score) VALUES (?)
+      ON CONFLICT(score) DO NOTHING
+    `);
+    const selectNutriscoreId = testDb.prepare(
+      `SELECT id FROM nutriscores WHERE score = ?`,
+    );
+
+    const insertRegion = testDb.prepare(`
+      INSERT INTO regions (label) VALUES (?)
+      ON CONFLICT(label) DO NOTHING
+    `);
+    const selectRegionId = testDb.prepare(
+      `SELECT id FROM regions WHERE label = ?`,
+    );
+
+    const insertProduct = testDb.prepare(`
       INSERT OR IGNORE INTO products (
-        mongo_id, name, brand, category,
-        nutriscore_score, from_europe,
+        mongo_id, name,
+        brand_id, category_id, nutriscore_id, region_id,
         calories, fat, sugar, salt
       ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `);
@@ -211,26 +389,65 @@ describe("Normalisation - mongoToSqlite", () => {
     const data = mockEnrichedProduct.raw_product_data || {};
     const nutriments = data.nutriments || {};
 
-    stmt.run(
+    const name = data.product_name || "";
+    const brandName = (data.brands || "").trim() || null;
+    const categoryName = (data.categories || "").trim() || null;
+    const score = mockEnrichedProduct.nutri_score_personalized || 0;
+    const regionLabel = (mockEnrichedProduct.fromEurope || "").trim() || null;
+
+    let brandId: number | null = null;
+    if (brandName) {
+      insertBrand.run(brandName);
+      brandId = (selectBrandId.get(brandName) as any)?.id ?? null;
+    }
+
+    let categoryId: number | null = null;
+    if (categoryName) {
+      insertCategory.run(categoryName);
+      categoryId = (selectCategoryId.get(categoryName) as any)?.id ?? null;
+    }
+
+    insertNutriscore.run(score);
+    const nutriscoreId =
+      (selectNutriscoreId.get(score) as any)?.id ?? null;
+
+    let regionId: number | null = null;
+    if (regionLabel) {
+      insertRegion.run(regionLabel);
+      regionId = (selectRegionId.get(regionLabel) as any)?.id ?? null;
+    }
+
+    insertProduct.run(
       mockEnrichedProduct._id.toString(),
-      data.product_name || "",
-      data.brands || "",
-      data.categories || "",
-      mockEnrichedProduct.nutri_score_personalized || 0,
-      mockEnrichedProduct.fromEurope,
+      name,
+      brandId,
+      categoryId,
+      nutriscoreId,
+      regionId,
       nutriments.energy,
       nutriments.fat,
       nutriments.sugars,
       nutriments.salt,
     );
 
-    const selectStmt = testDb.prepare("SELECT * FROM products WHERE mongo_id = ?");
+    const selectStmt = testDb.prepare(`
+      SELECT
+        p.name,
+        b.name AS brand,
+        c.name AS category,
+        n.score AS nutriscore_score
+      FROM products p
+      LEFT JOIN brands b ON p.brand_id = b.id
+      LEFT JOIN categories c ON p.category_id = c.id
+      LEFT JOIN nutriscores n ON p.nutriscore_id = n.id
+      WHERE p.mongo_id = ?
+    `);
     const product = selectStmt.get("mongo_id_default") as any;
 
     expect(product).toBeDefined();
     expect(product.name).toBe("");
-    expect(product.brand).toBe("");
-    expect(product.category).toBe("");
+    expect(product.brand).toBeNull();
+    expect(product.category).toBeNull();
     expect(product.nutriscore_score).toBe(0);
   });
 });

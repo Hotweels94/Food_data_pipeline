@@ -80,10 +80,6 @@ describe("Parsing des données", () => {
 
     expect(url.searchParams.get("page")).toBe("2");
     expect(url.searchParams.get("page_size")).toBe("50");
-    expect(url.searchParams.get("fields")).toContain("product_name");
-    expect(url.searchParams.get("fields")).toContain("brands");
-    expect(url.searchParams.get("fields")).toContain("categories");
-    expect(url.searchParams.get("fields")).toContain("nutriscore_grade");
   });
 
   it("devrait parser correctement un produit avec des champs optionnels manquants", async () => {

@@ -12,18 +12,7 @@ export async function fetchOpenFoodFacts(
 
   url.searchParams.set("page", page.toString());
   url.searchParams.set("page_size", pageSize.toString());
-  url.searchParams.set(
-    "fields",
-    [
-      "product_name",
-      "brands",
-      "categories",
-      "nutriscore_grade",
-      "ingredients_text",
-      "nutriments",
-      "countries"
-    ].join(",")
-  );
+
 
   const res = await fetch(url.toString(), {
     headers: {
